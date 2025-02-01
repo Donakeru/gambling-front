@@ -1,0 +1,56 @@
+/* Reset CSS: Eliminar márgenes, rellenos y establecer box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corregir el comportamiento de fuentes y tamaño de texto */
+html {
+    font-size: 16px;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Eliminar decoraciones en enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Eliminar estilos de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Ajustar imágenes para que no excedan su contenedor */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Asegurar que los elementos de formulario tengan estilos coherentes */
+button, input, textarea, select {
+    font: inherit;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+/* Hacer que los botones sean interactivos */
+button {
+    cursor: pointer;
+}
+
+/* Corregir el comportamiento de elementos de bloque en navegadores */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+
+/* Prevenir el salto de línea en tablas */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
