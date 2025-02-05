@@ -1,5 +1,9 @@
 # Proyecto final Modelos de programación II
-# Simulador de Gambling 
+# Simulador de Gambling
+
+Este proyecto es el Frontend del trabajo final de la materia "Modelos de Programación 2". Se trata de una aplicación de gambling en línea en la que los jugadores pueden registrarse, unirse a salas de apuestas y visualizar sus apuestas realizadas.
+
+El frontend está desarrollado con HTML, CSS y JavaScript, utilizando Bootstrap 5.3 para el diseño y SweetAlert2 para notificaciones interactivas. Se conecta con el backend mediante peticiones a una API REST, permitiendo la gestión de usuarios, la consulta de salas activas y la realización de apuestas.
 
 ## Participantes
 - Luis Miguel Viuche Madroñero (20212020082)
