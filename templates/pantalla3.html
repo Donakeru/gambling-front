@@ -52,9 +52,17 @@
                             </div>
                         </div>
                         <div class="row mt-3">
+                            <div class="col-md-6 col-12 mt-2 mt-md-0 d-flex justify-content-start">
+                                <span class="fw-bold">Personas que han apostado:</span><span class="ms-1" id="cantidad_personas"></span>
+                            </div>
+                            <div class="col-md-6 col-12 mt-2 mt-md-0 d-flex justify-content-start">
+                                <span class="fw-bold">Acumulado:</span><span class="ms-1" id="apuesta_acumulada"></span> 
+                            </div>
+                        </div>
+                        <div class="row mt-3">
                             <div class="col-md-6 col-12 mt-2 mt-md-0 d-flex flex-column align-items-start">
                                 <span class="fw-bold">¿Por cual opción va a apostar?</span>
-                                <select class="form-select" aria-label="Seleccione por la opción a apostar"  required>
+                                <select class="form-select" id="option-select" aria-label="Seleccione por la opción a apostar"  required>
                                     <option selected>Seleccione por la opción a apostar</option>
                                 </select>
                             </div>
@@ -69,6 +77,7 @@
                         </div>
                         <div class="mt-3">
                             <button type="submit" class="btn btn-primary custom-button">¡Apostar!</button>
+                            <button type="button" id="simular_apuesta_btn" class="btn btn-primary custom-button">Simular Apuesta</button>
                         </div>
                     </form>
                 </div>

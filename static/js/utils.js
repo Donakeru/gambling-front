@@ -1,4 +1,4 @@
-export function validarSesion(){
+export async function validarSesion(){
 
     const uuid = localStorage.getItem('token');
     const base_url = "/templates/base.html";
@@ -6,6 +6,12 @@ export function validarSesion(){
 
     // validar si existe el dato en el storage del navegador
     if (!uuid && location !== base_url) { location = base_url }
+
+    if (location === base_url) {
+        if (uuid) {
+            window.location.href = "/templates/pantalla2.html"
+        }
+    }
 
 }
 

@@ -29,6 +29,8 @@ function actualizarUIConSala(sala, usuario) {
     const codigo_sala_span = D.getElementById('codigo_sala_span');
     const juego_span = D.getElementById('juego_span');
     const saldo_disponible_span = D.getElementById('saldo_disponible_span');
+    const cantidad_personas_span = D.getElementById('cantidad_personas');
+    const apuesta_acumulada_span = D.getElementById('apuesta_acumulada');
 
     if (!sala) {
         informacion_sala_div.style.display = "none";
@@ -38,7 +40,9 @@ function actualizarUIConSala(sala, usuario) {
 
     codigo_sala_span.innerText = sala.codigo_sala;
     juego_span.innerText = sala.nombre_juego;
-    saldo_disponible_span.innerText = `${usuario.saldo_actual}`
+    saldo_disponible_span.innerText = `$${usuario.saldo_actual}`;
+    cantidad_personas_span.innerText = sala.cantidad_jugadores;
+    apuesta_acumulada_span.innerText = `$${sala.total_apostado}`
     
     select_apuesta.innerHTML = '<option selected>Seleccione una opción de apuesta</option>';
     sala.opciones_apuesta.forEach(opcion => {
@@ -49,6 +53,61 @@ function actualizarUIConSala(sala, usuario) {
     });
 
     informacion_sala_div.style.display = "flex";
+}
+
+async function simularApuesta(event) {
+    
+    if (!informacionSala) {
+        Swal.fire({ title: "Error", text: "Primero busca una sala válida.", icon: "warning" });
+        return;
+    }
+
+    if (!informacionUsuario) {
+        Swal.fire({ title: "Error", text: "Hubo algún problema identificado tu usuario.", icon: "warning" });
+        return;
+    }
+
+    const opcionApuesta = D.querySelector('#info-apuesta select').value;
+    const valorApuesta = D.getElementById('valorApuesta').value.trim();
+
+    if (!opcionApuesta || !valorApuesta || opcionApuesta === 'Seleccione una opción de apuesta') {
+        Swal.fire({ title: "Error", text: "Debe seleccionar una opción y un valor de apuesta.", icon: "warning" });
+        return;
+    }
+
+    if (parseInt(valorApuesta) > informacionUsuario.saldo_actual) {
+        Swal.fire({ title: "Error", text: "El valor que quires apostar excede tu saldo!", icon: "warning" });
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:8000/sala/simular`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                uuid_usuario: informacionUsuario.uuid,
+                codigo_sala: informacionSala.codigo_sala,
+                opcion_apuesta: parseInt(opcionApuesta),
+                monto_apuesta: parseFloat(valorApuesta)
+            }),
+            redirect: "follow"
+        });
+
+        const resultadoFetch = await response.json();
+        if (!response.ok) throw new Error(resultadoFetch.detail);
+
+        Swal.fire({
+            title: "Simulando...",
+            text: `De ganar su multiplicador de ganancia según lo apostado sería de aproximadamente x ${resultadoFetch.multiplicador}`,
+            icon: "success"
+        });
+
+    } catch (error) {
+        console.log(JSON.stringify(error))
+        Swal.fire({ title: "¡Algo sucedió!", text: error.message, icon: "error" });
+        return null;
+    }
+
 }
 
 async function unirseASala(event) {
@@ -76,8 +135,47 @@ async function unirseASala(event) {
         return;
     }
 
-    console.log(typeof valorApuesta);
-    // Aquí iría la lógica para enviar la apuesta al backend
+    const nombreOpcion = informacionSala.opciones_apuesta.find(opcion => opcion.id === parseInt(opcionApuesta)).nombre_opcion
+
+    Swal.fire({
+        title: `¿Estás seguro de apostar la cantidad de $${valorApuesta} poer la opcion ${nombreOpcion}?`,
+        showDenyButton: true,
+        confirmButtonText: "Sí, seguro",
+        denyButtonText: `Prefiero cambiarlo`
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            try {
+                const response = await fetch(`http://localhost:8000/sala/apostar`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        uuid_usuario: informacionUsuario.uuid,
+                        codigo_sala: informacionSala.codigo_sala,
+                        opcion_apuesta: parseInt(opcionApuesta),
+                        monto_apuesta: parseFloat(valorApuesta)
+                    }),
+                    redirect: "follow"
+                });
+        
+                const resultadoFetch = await response.json();
+                if (!response.ok) throw new Error(resultadoFetch.detail);
+
+                Swal.fire({
+                    title: "¡Perfecto!",
+                    text: "Tu apuesta se ha registrado correctamente",
+                    icon: "success"
+                }).then((result) => {
+                    window.location.href = '/templates/pantalla2.html'
+                });
+        
+            } catch (error) {
+                console.log(JSON.stringify(error))
+                Swal.fire({ title: "¡Algo sucedió!", text: error.message, icon: "error" });
+                return null;
+            }
+        }
+    });
+
 }
 
 D.addEventListener("DOMContentLoaded", async () => {
@@ -100,4 +198,6 @@ D.addEventListener("DOMContentLoaded", async () => {
     });
 
     D.getElementById("joinForm").addEventListener("submit", unirseASala);
+
+    D.getElementById("simular_apuesta_btn").addEventListener("click", simularApuesta);
 });
