@@ -72,7 +72,17 @@ Para visualizar el frontend localmente:
 ## Funcionalidades
 
 - **pantalla1.html**: Inicio de sesión y registro.
+![Pantalla de inicio](assets/inicio.jpeg)
+
+  
 - **pantalla2.html**: Muestra la lista de salas de apuestas y permite unirse.
+
+![Menu apuestas](assets/menuapuestas.jpeg)
+
 - **pantalla3.html**: Permite ingresar un código de sala y realizar una apuesta.
+
+![Pantalla de inicio](assets/menusalas.jpeg)
+![Pantalla de inicio](assets/menu_unirsalas.jpeg)
+
 
 
