@@ -45,8 +45,8 @@ Este proyecto utiliza las siguientes tecnologías:
 │   │   ├── join_to_gam.js # Lógica para unirse a una apuesta (pantalla 3)
 ├── templates/
 │   ├── pantalla1.html     # Pantalla de inicio de sesión / registro
-│   ├── pantalla2.html     # Pantalla principal con lista de apuestas
-│   ├── pantalla3.html     # Pantalla de ingreso a una sala de apuestas
+│   ├── /pantalla2.html     # Pantalla principal con lista de apuestas
+│   ├── /pantalla3.html     # Pantalla de ingreso a una sala de apuestas
 └── README.md              # Este archivo
 ```
 
@@ -75,11 +75,11 @@ Para visualizar el frontend localmente:
 ![Pantalla de inicio](assets/inicio.jpeg)
 
   
-- **pantalla2.html**: Muestra la lista de salas de apuestas y permite unirse.
+- **/pantalla2.html**: Muestra la lista de salas de apuestas y permite unirse.
 
 ![Menu apuestas](assets/menuapuestas.jpeg)
 
-- **pantalla3.html**: Permite ingresar un código de sala y realizar una apuesta.
+- **/pantalla3.html**: Permite ingresar un código de sala y realizar una apuesta.
 
 ![Pantalla de inicio](assets/menusalas.jpeg)
 ![Pantalla de inicio](assets/menu_unirsalas.jpeg)

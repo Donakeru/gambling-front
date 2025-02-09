@@ -1,15 +1,18 @@
 export async function validarSesion(){
 
     const uuid = localStorage.getItem('token');
-    const base_url = "index.html";
+    const base_url = "/index.html";
     let location = window.location.pathname;
+
+    console.log(location)
+    console.log(base_url)
 
     // validar si existe el dato en el storage del navegador
     if (!uuid && location !== base_url) { location = base_url }
 
     if (location === base_url) {
         if (uuid) {
-            window.location.href = "pantalla2.html"
+            window.location.href = "/pantalla2.html"
         }
     }
 
@@ -44,7 +47,7 @@ export async function obtenerInfoUsuario() {
             icon: "error"
         }).then((result) => {
             localStorage.removeItem('token');
-            window.location.href = 'index.html';
+            window.location.href = '/index.html';
         });
     }
 }

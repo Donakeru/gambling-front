@@ -84,6 +84,6 @@ D.addEventListener("DOMContentLoaded", async (event) => {  // Usar async aquí
 
 
     nueva_apuesta_button.addEventListener('click', (event) => {
-        window.location.href = 'pantalla3.html'
+        window.location.href = '/pantalla3.html'
     })
 });

@@ -31,7 +31,7 @@ async function RegistrarUsuario(nickname) {
             icon: "success"
         }).then((result) => {
             localStorage.setItem('token', resultadoFetch.uuid)
-            window.location.href = 'pantalla2.html'
+            window.location.href = '/pantalla2.html'
         });
 
     } catch (error) {
