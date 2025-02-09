@@ -1,7 +1,7 @@
 export async function validarSesion(){
 
     const uuid = localStorage.getItem('token');
-    const base_url = "/index.html";
+    const base_url = "/";
     let location = window.location.pathname;
 
     console.log(location)
@@ -47,7 +47,7 @@ export async function obtenerInfoUsuario() {
             icon: "error"
         }).then((result) => {
             localStorage.removeItem('token');
-            window.location.href = '/index.html';
+            window.location.href = '/';
         });
     }
 }
