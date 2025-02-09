@@ -6,7 +6,7 @@ let informacionUsuario = null;
 
 async function buscarInformacionSala(codigo_sala) {
     try {
-        const response = await fetch(`http://localhost:8000/sala/${codigo_sala}`, {
+        const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/sala/${codigo_sala}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
             redirect: "follow"
@@ -81,7 +81,7 @@ async function simularApuesta(event) {
     }
 
     try {
-        const response = await fetch(`http://localhost:8000/sala/simular`, {
+        const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/sala/simular`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -145,7 +145,7 @@ async function unirseASala(event) {
     }).then(async (result) => {
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:8000/sala/apostar`, {
+                const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/sala/apostar`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({

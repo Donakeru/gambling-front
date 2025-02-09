@@ -18,7 +18,7 @@ async function RegistrarUsuario(nickname) {
 
 
     try {
-        const response = await fetch("http://localhost:8000/usuario", requestOptions);
+        const response = await fetch("https://gambling-back2-6fb9f86f7f99.herokuapp.com/usuario", requestOptions);
         const resultadoFetch = await response.json();
 
         if ( !response.ok ) {

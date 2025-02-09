@@ -67,7 +67,7 @@ Para visualizar el frontend localmente:
    python -m http.server 8000
    ```
 
-   Luego, abrir en el navegador: `http://localhost:8000/templates/pantalla1.html`
+   Luego, abrir en el navegador: `https://gambling-back2-6fb9f86f7f99.herokuapp.com/templates/pantalla1.html`
 
 ## Funcionalidades
 

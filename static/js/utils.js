@@ -28,7 +28,7 @@ export async function obtenerInfoUsuario() {
     };
 
     try {
-        const response = await fetch(`http://localhost:8000/usuario/${uuid}`, requestOptions);
+        const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/usuario/${uuid}`, requestOptions);
         const resultadoFetch = await response.json();
 
         if (!response.ok) {
