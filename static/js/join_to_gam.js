@@ -165,7 +165,7 @@ async function unirseASala(event) {
                     text: "Tu apuesta se ha registrado correctamente",
                     icon: "success"
                 }).then((result) => {
-                    window.location.href = '/templates/pantalla2.html'
+                    window.location.href = 'pantalla2.html'
                 });
         
             } catch (error) {
@@ -187,7 +187,7 @@ D.addEventListener("DOMContentLoaded", async () => {
     });
 
     D.getElementById("go_back_btn").addEventListener("click", () => {
-        window.location.href = "/templates/pantalla2.html";
+        window.location.href = "pantalla2.html";
     });
 
     D.getElementById("searchForm").addEventListener("submit", async (event) => {
