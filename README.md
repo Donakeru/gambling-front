@@ -44,9 +44,9 @@ Este proyecto utiliza las siguientes tecnologías:
 │   │   ├── main_page.js   # Lógica para pantalla principal (pantalla 2)
 │   │   ├── join_to_gam.js # Lógica para unirse a una apuesta (pantalla 3)
 ├── templates/
-│   ├── pantalla1.html     # Pantalla de inicio de sesión / registro
-│   ├── /pantalla2.html     # Pantalla principal con lista de apuestas
-│   ├── /pantalla3.html     # Pantalla de ingreso a una sala de apuestas
+├── index.html # Pantalla de inicio de sesión / registro
+├── join_room.html # Pantalla principal con lista de apuestas
+├── profile.html # Pantalla de ingreso a una sala de apuestas
 └── README.md              # Este archivo
 ```
 
