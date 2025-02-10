@@ -41,8 +41,11 @@ Este proyecto utiliza las siguientes tecnologías:
 │   │   ├── estilos.css    # Estilos personalizados
 │   │   ├── reset.css      # Reset de estilos
 │   ├── js/
-│   │   ├── main_page.js   # Lógica para pantalla principal (pantalla 2)
-│   │   ├── join_to_gam.js # Lógica para unirse a una apuesta (pantalla 3)
+│   │   ├── main_page.js   # Lógica para pantalla principal 
+│   │   ├── join_to_gam.js # Lógica para unirse a una apuesta 
+│   │   ├── register.js # Lógica para registrar usuario
+│   │   ├── utils.js # Funciones útiles
+│   │   ├── const.js # Constantes
 ├── templates/
 ├── index.html # Pantalla de inicio de sesión / registro
 ├── join_room.html # Pantalla principal con lista de apuestas
