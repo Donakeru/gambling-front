@@ -1,4 +1,5 @@
 import { validarSesion, obtenerInfoUsuario } from "./utils.js";
+import {HOST, MAIN_PAGE} from "./const.js"
 
 const D = document;
 let informacionSala = null; // Variable global para almacenar la información de la sala
@@ -6,7 +7,7 @@ let informacionUsuario = null;
 
 async function buscarInformacionSala(codigo_sala) {
     try {
-        const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/sala/${codigo_sala}`, {
+        const response = await fetch(`${HOST}/sala/${codigo_sala}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
             redirect: "follow"
@@ -16,6 +17,9 @@ async function buscarInformacionSala(codigo_sala) {
         if (!response.ok) throw new Error(resultadoFetch.detail);
 
         informacionSala = resultadoFetch;
+
+        console.log(informacionSala)
+
         return resultadoFetch;
     } catch (error) {
         Swal.fire({ title: "¡Algo sucedió!", text: error.message, icon: "error" });
@@ -81,7 +85,7 @@ async function simularApuesta(event) {
     }
 
     try {
-        const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/sala/simular`, {
+        const response = await fetch(`${HOST}/sala/simular`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -145,7 +149,7 @@ async function unirseASala(event) {
     }).then(async (result) => {
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/sala/apostar`, {
+                const response = await fetch(`${HOST}/sala/apostar`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -165,7 +169,7 @@ async function unirseASala(event) {
                     text: "Tu apuesta se ha registrado correctamente",
                     icon: "success"
                 }).then((result) => {
-                    window.location.href = '/pantalla2.html'
+                    window.location.href = MAIN_PAGE
                 });
         
             } catch (error) {
@@ -187,7 +191,7 @@ D.addEventListener("DOMContentLoaded", async () => {
     });
 
     D.getElementById("go_back_btn").addEventListener("click", () => {
-        window.location.href = "/pantalla2.html";
+        window.location.href = MAIN_PAGE
     });
 
     D.getElementById("searchForm").addEventListener("submit", async (event) => {

@@ -1,4 +1,5 @@
 import { validarSesion } from "./utils.js";
+import {HOST, MAIN_PAGE} from "./const.js"
 
 async function RegistrarUsuario(nickname) {
 
@@ -18,7 +19,7 @@ async function RegistrarUsuario(nickname) {
 
 
     try {
-        const response = await fetch("https://gambling-back2-6fb9f86f7f99.herokuapp.com/usuario", requestOptions);
+        const response = await fetch(`${HOST}/usuario`, requestOptions);
         const resultadoFetch = await response.json();
 
         if ( !response.ok ) {
@@ -31,7 +32,7 @@ async function RegistrarUsuario(nickname) {
             icon: "success"
         }).then((result) => {
             localStorage.setItem('token', resultadoFetch.uuid)
-            window.location.href = '/pantalla2.html'
+            window.location.href = MAIN_PAGE
         });
 
     } catch (error) {

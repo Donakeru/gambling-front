@@ -1,18 +1,17 @@
+import {HOST, MAIN_PAGE, REGISTER_PAGE} from "./const.js"
+
 export async function validarSesion(){
 
     const uuid = localStorage.getItem('token');
-    const base_url = "/";
+    const base_url = REGISTER_PAGE;
     let location = window.location.pathname;
-
-    console.log(location)
-    console.log(base_url)
 
     // validar si existe el dato en el storage del navegador
     if (!uuid && location !== base_url) { location = base_url }
 
     if (location === base_url) {
         if (uuid) {
-            window.location.href = "/pantalla2.html"
+            window.location.href = MAIN_PAGE
         }
     }
 
@@ -31,7 +30,7 @@ export async function obtenerInfoUsuario() {
     };
 
     try {
-        const response = await fetch(`https://gambling-back2-6fb9f86f7f99.herokuapp.com/usuario/${uuid}`, requestOptions);
+        const response = await fetch(`${HOST}/usuario/${uuid}`, requestOptions);
         const resultadoFetch = await response.json();
 
         if (!response.ok) {
@@ -47,7 +46,7 @@ export async function obtenerInfoUsuario() {
             icon: "error"
         }).then((result) => {
             localStorage.removeItem('token');
-            window.location.href = '/';
+            window.location.href = REGISTER_PAGE;
         });
     }
 }
